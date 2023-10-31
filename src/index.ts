@@ -65,10 +65,11 @@ function conferPlanetSitu(newSituation: string) {
 
 // MENU
 
-
+let planet
 let situation: planetSitu 
 let arrayLoc: where = [0, 0, 0, 0]
 let resp = ''
+
 while (resp != '6') {
     resp = prompt('1. create planet\n2. change situation\n3. add satelite\n4. delete satelite\n5. show planets\n6. sair')
     switch (resp) {
@@ -84,28 +85,28 @@ while (resp != '6') {
             }
             break
         case '2':
-            let Planet = findPlanet(prompt('type the name of the planet you wanna change'))
-            if (Planet) {
+            planet = findPlanet(prompt('type the name of the planet you wanna change'))
+            if (planet) {
                 situation = conferPlanetSitu(prompt("type the new situation of the planet: (habitable, inhabited, uninhabitable, unexplored)" ))
                 if (situation) {
-                    changeSituation(Planet, situation)
+                    changeSituation(planet, situation)
                 }
             } else {
                 alert('Name of the planet not found')
             } 
             break
         case '3':
-            let Planet2 = findPlanet(prompt('type the name of  the planet you wanna change'))
-            if (Planet2) {
-                appendSatelite(Planet2, prompt('whats the name of the satelite you wanna add?'))
+            planet = findPlanet(prompt('type the name of  the planet you wanna change'))
+            if (planet) {
+                appendSatelite(planet, prompt('whats the name of the satelite you wanna add?'))
             } else {
                 alert('name of the planet not found')
             }
             break
         case '4':
-            let Planet3 = findPlanet(prompt('type the name of  the planet you wanna change'))
-            if (Planet3) {
-                deleteSatelite(Planet3, prompt('whats the name of the satelite you wanna delete?'))
+            planet = findPlanet(prompt('type the name of  the planet you wanna change'))
+            if (planet) {
+                deleteSatelite(planet, prompt('whats the name of the satelite you wanna delete?'))
             } else {
                 alert('name not found')
             }

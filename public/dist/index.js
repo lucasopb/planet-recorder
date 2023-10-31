@@ -41,6 +41,7 @@ function conferPlanetSitu(newSituation) {
     }
 }
 // MENU
+let planet;
 let situation;
 let arrayLoc = [0, 0, 0, 0];
 let resp = '';
@@ -59,11 +60,11 @@ while (resp != '6') {
             }
             break;
         case '2':
-            let Planet = findPlanet(prompt('type the name of the planet you wanna change'));
-            if (Planet) {
+            planet = findPlanet(prompt('type the name of the planet you wanna change'));
+            if (planet) {
                 situation = conferPlanetSitu(prompt("type the new situation of the planet: (habitable, inhabited, uninhabitable, unexplored)"));
                 if (situation) {
-                    changeSituation(Planet, situation);
+                    changeSituation(planet, situation);
                 }
             }
             else {
@@ -71,25 +72,25 @@ while (resp != '6') {
             }
             break;
         case '3':
-            let Planet2 = findPlanet(prompt('type the name of  the planet you wanna change'));
-            if (Planet2) {
-                appendSatelite(Planet2, prompt('whats the name of the satelite you wanna append?'));
+            planet = findPlanet(prompt('type the name of  the planet you wanna change'));
+            if (planet) {
+                appendSatelite(planet, prompt('whats the name of the satelite you wanna add?'));
             }
             else {
                 alert('name of the planet not found');
             }
             break;
         case '4':
-            let Planet3 = findPlanet(prompt('type the name of  the planet you wanna change'));
-            if (Planet3) {
-                deleteSatelite(Planet3, prompt('whats the name of the satelite you wanna delete?'));
+            planet = findPlanet(prompt('type the name of  the planet you wanna change'));
+            if (planet) {
+                deleteSatelite(planet, prompt('whats the name of the satelite you wanna delete?'));
             }
             else {
-                alert('name of the planet not found');
+                alert('name not found');
             }
             break;
         case '5':
-            let list = 'Naves Registradas:\n';
+            let list = 'all planets:\n';
             allPlanets.forEach((planet) => {
                 list += `
                 planet: ${planet.name}
